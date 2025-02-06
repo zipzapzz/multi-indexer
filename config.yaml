@@ -50,7 +50,8 @@ networks:
       address:
   - id: 25 # Cronos
     rpc_config:
-      url: https://lb.drpc.org/ogrpc?network=cronos&dkey=ApkrkLOqiUpMhVmqDaPGhgFennWlhtgR75NaKjW4AN0P # RPC URL that will be used to subscribe to blockchain data on this network
+      # url: https://lb.drpc.org/ogrpc?network=cronos&dkey=ApkrkLOqiUpMhVmqDaPGhgFennWlhtgR75NaKjW4AN0P # RPC URL that will be used to subscribe to blockchain data on this network
+      url: https://rpc.owlracle.info/cro/70d38ce1826c4a60bb2a8e05a6c8b20f
       initial_block_interval: 10000 # Integer
       backoff_multiplicative: 0.8 # Float
       acceleration_additive: 2000 # Integer
