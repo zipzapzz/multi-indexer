@@ -16,14 +16,14 @@ contracts:
     events:
       - event: "TeamFinanceTokenMint(address owner)"
 networks:
-  # - id: 1 # Ethereum Mainnet
-  #   start_block: 10861674
-  #   contracts:
-  #   - name: StakingFactory
-  #     address:
-  #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
-  #   - name: MintFactory
-  #     address:
+  - id: 1 # Ethereum Mainnet
+    start_block: 10861674
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+    - name: MintFactory
+      address:
   # - id: 56 # BNB Mainnet
   #   start_block: 19909467
   #   contracts:
@@ -48,54 +48,54 @@ networks:
       - 0x4ce7d7675E8317BFdCCF5909C2259a947DcA4E38
     - name: MintFactory
       address:
-  # - id: 25 # Cronos
-  #   rpc_config:
-  #     url: https://evm.cronos.org # RPC URL that will be used to subscribe to blockchain data on this network
-  #     initial_block_interval: 10000 # Integer
-  #     backoff_multiplicative: 0.8 # Float
-  #     acceleration_additive: 2000 # Integer
-  #     interval_ceiling: 10000 # Integer
-  #     backoff_millis: 5000 # Integer
-  #     query_timeout_millis: 20000 # Integer
-  #   start_block: 11369536
-  #   contracts:
-  #   - name: StakingFactory
-  #     address:
-  #     - 0x0E7a5D265FC08E9Eb9468c51B126fE24B9C8e645
-  #   - name: MintFactory
-  #     address:
-  # - id: 2222 # Kava
-  #   rpc_config:
-  #     url: https://evm.kava.io # RPC URL that will be used to subscribe to blockchain data on this network
-  #     initial_block_interval: 10000 # Integer
-  #     backoff_multiplicative: 0.8 # Float
-  #     acceleration_additive: 2000 # Integer
-  #     interval_ceiling: 10000 # Integer
-  #     backoff_millis: 5000 # Integer
-  #     query_timeout_millis: 20000 # Integer
-  #   start_block: 1982214
-  #   contracts:
-  #   - name: StakingFactory
-  #     address:
-  #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
-  #   - name: MintFactory
-  #     address:
-  # - id: 8217 # Kaia
-  #   rpc_config:
-  #     url: https://public-en.node.kaia.io # RPC URL that will be used to subscribe to blockchain data on this network
-  #     initial_block_interval: 10000 # Integer
-  #     backoff_multiplicative: 0.8 # Float
-  #     acceleration_additive: 2000 # Integer
-  #     interval_ceiling: 10000 # Integer
-  #     backoff_millis: 5000 # Integer
-  #     query_timeout_millis: 20000 # Integer
-  #   start_block: 170676030
-  #   contracts:
-  #   - name: StakingFactory
-  #     address:
-  #     - 0x9f41B1C580B2F5029632fc7778071638c89D7427
-  #   - name: MintFactory
-  #     address:
+  - id: 25 # Cronos
+    rpc_config:
+      url: https://lb.drpc.org/ogrpc?network=cronos&dkey=ApkrkLOqiUpMhVmqDaPGhgFennWlhtgR75NaKjW4AN0P # RPC URL that will be used to subscribe to blockchain data on this network
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 11369536
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0x0E7a5D265FC08E9Eb9468c51B126fE24B9C8e645
+    - name: MintFactory
+      address:
+  - id: 2222 # Kava
+    rpc_config:
+      url: https://evm.kava.io # RPC URL that will be used to subscribe to blockchain data on this network
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 1982214
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+    - name: MintFactory
+      address:
+  - id: 8217 # Kaia
+    rpc_config:
+      url: https://public-en.node.kaia.io # RPC URL that will be used to subscribe to blockchain data on this network
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 170676030
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0x9f41B1C580B2F5029632fc7778071638c89D7427
+    - name: MintFactory
+      address:
 # Rollback on reorg mode currently incurs a performance hit on historical sync
 # while developing an indexer we recommend setting this to false
 rollback_on_reorg: false
