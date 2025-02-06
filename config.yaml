@@ -89,7 +89,7 @@ networks:
       interval_ceiling: 10000 # Integer
       backoff_millis: 5000 # Integer
       query_timeout_millis: 20000 # Integer
-    start_block: 170539718
+    start_block: 170676030
     contracts:
     - name: StakingFactory
       address:
