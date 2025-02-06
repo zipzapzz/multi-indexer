@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: multi-chain-indexer
+description: Multi chain indexer
+contracts:
+  - name: StakingFactory
+    abi_file_path: ./abis/staking-pool-abi.json
+    handler: src/EventHandlers.ts
+    events:
+    - event: Claim(address indexed user, uint256 amount, uint256 poolIndex)
+    - event: Deposit(address indexed user, uint256 amount, uint256 poolIndex)
+    - event: PoolCreated(address indexed stakingToken, address indexed rewardToken, uint256 startTime, uint256 endTime, uint256 precision, uint256 totalReward)
+    - event: Withdraw(address indexed user, uint256 amount, uint256 poolIndex)
+  - name: MintFactory
+    abi_file_path: ./abis/mint-abi.json
+    handler: src/EventHandlers.ts
+    events:
+      - event: "TeamFinanceTokenMint(address owner)"
+networks:
+  # - id: 1 # Ethereum Mainnet
+  #   start_block: 10861674
+  #   contracts:
+  #   - name: StakingFactory
+  #     address:
+  #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+  #   - name: MintFactory
+  #     address:
+  # - id: 56 # BNB Mainnet
+  #   start_block: 19909467
+  #   contracts:
+  #   - name: StakingFactory
+  #     address:
+  #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+  #   - name: MintFactory
+  #     address:
+  - id: 153153 # Dione
+    rpc_config:
+      url: https://node.dioneprotocol.com/ext/bc/D/rpc # RPC URL that will be used to subscribe to blockchain data on this network
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 240
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0x4ce7d7675E8317BFdCCF5909C2259a947DcA4E38
+    - name: MintFactory
+      address:
+  - id: 25 # Cronos
+    rpc_config:
+      url: https://evm.cronos.org # RPC URL that will be used to subscribe to blockchain data on this network
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 11369536
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0x0E7a5D265FC08E9Eb9468c51B126fE24B9C8e645
+    - name: MintFactory
+      address:
+  - id: 2222 # Kava
+    rpc_config:
+      url: https://evm.kava.io # RPC URL that will be used to subscribe to blockchain data on this network
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 1982214
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+    - name: MintFactory
+      address:
+  - id: 8217 # Kaia
+    rpc_config:
+      url: https://public-en.node.kaia.io # RPC URL that will be used to subscribe to blockchain data on this network
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 170539718
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0x9f41B1C580B2F5029632fc7778071638c89D7427
+    - name: MintFactory
+      address:
+# Rollback on reorg mode currently incurs a performance hit on historical sync
+# while developing an indexer we recommend setting this to false
+rollback_on_reorg: false
+field_selection:
+  transaction_fields:
+    - "hash"

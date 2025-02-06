@@ -1,0 +1,68 @@
+type StakingClaim {
+  id: ID!
+  user: String!
+  amount: BigInt!
+  poolIndex: BigInt!
+  address: String!
+  hash: String
+  timestamp: BigInt
+  blockHeight: Int
+  transactionIndex: Int
+  chainId: Int!
+}
+
+type StakingDeposit {
+  id: ID!
+  user: String!
+  amount: BigInt!
+  poolIndex: BigInt!
+  address: String!
+  hash: String
+  timestamp: BigInt
+  blockHeight: Int
+  transactionIndex: Int
+  chainId: Int!
+}
+
+type StakingPool {
+  id: ID!
+  stakingToken: String!
+  rewardToken: String!
+  startTime: BigInt!
+  endTime: BigInt!
+  precision: BigInt!
+  totalReward: BigInt!
+  hash: String
+  timestamp: BigInt
+  blockHeight: Int
+  transactionIndex: Int
+  chainId: Int!
+}
+
+type StakingWithdraw {
+  id: ID!
+  user: String!
+  amount: BigInt!
+  poolIndex: BigInt!
+  address: String!
+  hash: String
+  timestamp: BigInt
+  blockHeight: Int
+  transactionIndex: Int
+  chainId: Int!
+}
+
+type teamFinanceTokens {
+  id: ID!
+  address: String!
+  name: String!
+  symbol: String!
+  totalSupply: BigInt!
+  owner: String!
+  decimals: Int!
+  txHash: String
+  chainId: Int!
+  timestamp: BigInt
+  blockHeight: Int
+  transactionIndex: Int
+}
