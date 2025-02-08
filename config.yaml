@@ -50,8 +50,8 @@ networks:
       address:
   - id: 25 # Cronos
     rpc_config:
-      url: https://rpc.owlracle.info/cro/70d38ce1826c4a60bb2a8e05a6c8b20f
-      # url: https://rpc-indexdev-agitated.futuretechlabs.xyz/main/evm/25
+      # url: https://rpc.owlracle.info/cro/70d38ce1826c4a60bb2a8e05a6c8b20f
+      url: https://rpc-indexdev-agitated.futuretechlabs.xyz/main/evm/25
       initial_block_interval: 10000 # Integer
       backoff_multiplicative: 0.8 # Float
       acceleration_additive: 2000 # Integer
@@ -83,7 +83,8 @@ networks:
       address:
   - id: 8217 # Kaia
     rpc_config:
-      url: https://public-en.node.kaia.io # RPC URL that will be used to subscribe to blockchain data on this network
+      url: https://rpc-indexdev-agitated.futuretechlabs.xyz/main/evm/8217
+      # url: https://public-en.node.kaia.io # RPC URL that will be used to subscribe to blockchain data on this network
       initial_block_interval: 10000 # Integer
       backoff_multiplicative: 0.8 # Float
       acceleration_additive: 2000 # Integer
