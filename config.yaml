@@ -98,6 +98,22 @@ networks:
       - 0x9f41B1C580B2F5029632fc7778071638c89D7427
     - name: MintFactory
       address:
+  - id: 369 # PulseChain
+    rpc_config:
+      url: https://rpc-indexdev-agitated.futuretechlabs.xyz/main/evm/369
+      initial_block_interval: 10000 # Integer
+      backoff_multiplicative: 0.8 # Float
+      acceleration_additive: 2000 # Integer
+      interval_ceiling: 10000 # Integer
+      backoff_millis: 5000 # Integer
+      query_timeout_millis: 20000 # Integer
+    start_block: 15141503
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+    - name: MintFactory
+      address:
 # Rollback on reorg mode currently incurs a performance hit on historical sync
 # while developing an indexer we recommend setting this to false
 rollback_on_reorg: false
