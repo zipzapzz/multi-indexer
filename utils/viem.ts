@@ -11,6 +11,7 @@ import {
   kaia,
   kava,
   cronos,
+  pulsechain
 } from "viem/chains";
 
 export enum ChainId {
@@ -30,8 +31,25 @@ export enum ChainId {
 }
 
 export const publicClients = {
+  // 1: createPublicClient({
+  //   chain: mainnet,
+  //   transport: http(),
+  // }),
   1: createPublicClient({
-    chain: mainnet,
+    chain: defineChain({
+      name: "ETH",
+      rpcUrls: {
+        default: {
+          http: ['https://rpc-dev-agitated.futuretechlabs.xyz/main/evm/1'],
+        },
+      },
+      id: 1,
+      nativeCurrency: {
+        name: "ETH",
+        symbol: "ETH",
+        decimals: 0
+      }
+    }),
     transport: http(),
   }),
   42161: createPublicClient({
@@ -62,8 +80,25 @@ export const publicClients = {
     chain: optimism,
     transport: http(),
   }),
+  // 25: createPublicClient({
+  //   chain: cronos,
+  //   transport: http(),
+  // }),
   25: createPublicClient({
-    chain: cronos,
+    chain: defineChain({
+      name: "Cronos",
+      rpcUrls: {
+        default: {
+          http: ['https://rpc-dev-agitated.futuretechlabs.xyz/main/evm/25'],
+        },
+      },
+      id: 25,
+      nativeCurrency: {
+        name: "CRO",
+        symbol: "CRO",
+        decimals: 0
+      }
+    }),
     transport: http(),
   }),
   2222: createPublicClient({
@@ -86,6 +121,23 @@ export const publicClients = {
       nativeCurrency: {
         name: "DIONE",
         symbol: "DIONE",
+        decimals: 0
+      }
+    }),
+    transport: http(),
+  }),
+  369: createPublicClient({
+    chain: defineChain({
+      name: "PulseChain",
+      rpcUrls: {
+        default: {
+          http: ['https://rpc-dev-agitated.futuretechlabs.xyz/main/evm/369'],
+        },
+      },
+      id: 369,
+      nativeCurrency: {
+        name: "PLS",
+        symbol: "PLS",
         decimals: 0
       }
     }),
