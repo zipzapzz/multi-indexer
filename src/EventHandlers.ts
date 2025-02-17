@@ -93,6 +93,7 @@ StakingFactory.Withdraw.handler(async ({ event, context }) => {
 
 MintFactory.MetadataUpdated.handler(async ({ event, context }) => {
   const address = event.srcAddress.toLocaleLowerCase();
+  await setTimeout(2000);
   let existingToken = await context.teamFinanceTokens.get(`${event.chainId}_${address}`);
   
   if (existingToken) {
@@ -101,27 +102,7 @@ MintFactory.MetadataUpdated.handler(async ({ event, context }) => {
       ipfs: event.params.metadata_ipfs_hash
     }
     context.teamFinanceTokens.set(existingToken);
-  } else {
-    const tokenInfo = await getTOkenInfo(address, event.chainId as keyof typeof publicClients);
-    const [decimals, symbol, name, totalSupply] = [tokenInfo.decimals, tokenInfo.symbol, tokenInfo.name, tokenInfo.totalSupply];
-
-    const entity: teamFinanceTokens = { 
-      id: `${event.chainId}_${address}`,
-      name,
-      symbol,
-      totalSupply,
-      decimals: decimals ?? 0,
-      address,
-      owner: "",
-      txHash: event.transaction.hash,
-      timestamp: BigInt(event.block.timestamp * 1000),
-      blockHeight: event.block.number,
-      transactionIndex: event.logIndex,
-      ipfs: event.params.metadata_ipfs_hash,
-      chainId: event.chainId
-    };
-    context.teamFinanceTokens.set(entity);
-  }
+  } 
 },
 { wildcard: true },
 );
@@ -141,7 +122,7 @@ MintFactory.TeamFinanceTokenMint.handler(async ({ event, context }) => {
   } else {
     const tokenInfo = await getTOkenInfo(address, event.chainId as keyof typeof publicClients);
     const [decimals, symbol, name, totalSupply] = [tokenInfo.decimals, tokenInfo.symbol, tokenInfo.name, tokenInfo.totalSupply];
-    
+
     const entity: teamFinanceTokens = { 
       id: `${event.chainId}_${address}`,
       name,

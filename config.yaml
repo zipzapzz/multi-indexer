@@ -25,14 +25,14 @@ networks:
   #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
   #   - name: MintFactory
   #     address:
-  # - id: 11155111
-  #   start_block: 7679900
-  #   contracts:
-  #   - name: StakingFactory
-  #     address:
-  #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
-  #   - name: MintFactory
-  #     address:
+  - id: 11155111
+    start_block: 3463632
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+    - name: MintFactory
+      address:
   - id: 1 # Ethereum Mainnet
     start_block: 10861674
     contracts:
