@@ -2,6 +2,20 @@ import { isAddress } from "viem";
 import { publicClients } from "./viem";
 import { erc20Abi } from "./abis";
 
+export async function getTOkenInfo(
+  address: string,
+  chainId: keyof typeof publicClients
+): Promise<{ symbol: string; name: string; totalSupply: bigint; decimals: number | null }> {
+  const [symbol, name, totalSupply, decimals] = await Promise.all([
+    fetchTokenSymbol(address, chainId),
+    fetchTokenName(address, chainId),
+    fetchTokenTotalSupply(address, chainId),
+    fetchTokenDecimals(address, chainId),
+  ]);
+
+  return { symbol, name, totalSupply, decimals };
+}
+
 export async function fetchTokenSymbol(
   address: string,
   chainId: keyof typeof publicClients

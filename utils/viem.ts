@@ -11,7 +11,8 @@ import {
   kaia,
   kava,
   cronos,
-  pulsechain
+  pulsechain,
+  sepolia
 } from "viem/chains";
 
 export enum ChainId {
@@ -78,6 +79,23 @@ export const publicClients = {
   }),
   10: createPublicClient({
     chain: optimism,
+    transport: http(),
+  }),
+  11155111: createPublicClient({
+    chain: defineChain({
+      name: "ETH",
+      rpcUrls: {
+        default: {
+          http: ['https://rpc-dev-agitated.futuretechlabs.xyz/main/evm/11155111'],
+        },
+      },
+      id: 11155111,
+      nativeCurrency: {
+        name: "ETH",
+        symbol: "ETH",
+        decimals: 0
+      }
+    }),
     transport: http(),
   }),
   // 25: createPublicClient({

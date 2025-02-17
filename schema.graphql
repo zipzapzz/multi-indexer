@@ -1,57 +1,3 @@
-type StakingClaim {
-  id: ID!
-  user: String!
-  amount: BigInt!
-  poolIndex: BigInt!
-  address: String!
-  hash: String
-  timestamp: BigInt
-  blockHeight: Int
-  transactionIndex: Int
-  chainId: Int!
-}
-
-type StakingDeposit {
-  id: ID!
-  user: String!
-  amount: BigInt!
-  poolIndex: BigInt!
-  address: String!
-  hash: String
-  timestamp: BigInt
-  blockHeight: Int
-  transactionIndex: Int
-  chainId: Int!
-}
-
-type StakingPool {
-  id: ID!
-  stakingToken: String!
-  rewardToken: String!
-  startTime: BigInt!
-  endTime: BigInt!
-  precision: BigInt!
-  totalReward: BigInt!
-  hash: String
-  timestamp: BigInt
-  blockHeight: Int
-  transactionIndex: Int
-  chainId: Int!
-}
-
-type StakingWithdraw {
-  id: ID!
-  user: String!
-  amount: BigInt!
-  poolIndex: BigInt!
-  address: String!
-  hash: String
-  timestamp: BigInt
-  blockHeight: Int
-  transactionIndex: Int
-  chainId: Int!
-}
-
 type teamFinanceTokens {
   id: ID!
   address: String!
@@ -65,4 +11,269 @@ type teamFinanceTokens {
   timestamp: BigInt
   blockHeight: Int
   transactionIndex: Int
+  ipfs: String
+}
+
+type deposit {
+  id: ID! # Transaction hash
+  blockHeight: Int
+  depositId: BigInt! @index
+  tokenAddress: String! @index
+  withdrawalAddress: String!
+  lockContractAddress: String!
+  amount: BigInt!
+  unlockTime: BigInt!
+  chainId: Int!
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  token: token
+  depositDetail: depositDetail
+}
+
+type depositNFT {
+  id: ID! # Transaction hash
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  lockContractAddress: String!
+  depositId: BigInt!
+  tokenAddress: String! @index
+  tokenId: BigInt! @index
+  withdrawalAddress: String!
+  amount: BigInt!
+  unlockTime: BigInt!
+  nft: nft
+  depositDetail: depositDetail
+}
+
+type lockDurationExtended {
+  id: ID! # Transaction hash
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  lockContractAddress: String!
+  lockId: BigInt!
+  unlockTime: BigInt!
+}
+
+type lockSplit {
+  id: ID! # Transaction hash
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  lockContractAddress: String!
+  lockId: BigInt!
+  remainingAmount: BigInt!
+  splitLockId: BigInt!
+  newSplitLockAmount: BigInt!
+}
+
+type logNFTWithdrawal {
+  id: ID! # Transaction hash
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  lockContractAddress: String!
+  lockId: BigInt!
+  tokenAddress: String! @index
+  tokenId: BigInt! @index
+  withdrawalAddress: String!
+  amount: BigInt!
+  depositDetail: depositDetail
+}
+
+type logTokenWithdrawal {
+  id: ID! # Transaction hash
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  lockContractAddress: String!
+  lockId: BigInt!
+  tokenAddress: String! @index
+  withdrawalAddress: String!
+  amount: BigInt!
+  depositDetail: depositDetail
+}
+
+type depositDetail {
+  id: ID!
+  chainId: Int!
+  tokenAddress: String
+  withdrawalAddress: String
+  tokenAmount: BigInt
+  unlockTime: BigInt
+  withdrawn: Boolean
+  tokenId: BigInt
+  isNFT: Boolean
+  migratedLockDepositId: BigInt
+  isNFTMinted: Boolean
+}
+
+type token {
+  id: ID!
+  chainId: Int!
+  name: String!
+  symbol: String!
+  address: String!
+  totalSupply: BigInt!
+  decimals: Int!
+}
+
+type nft {
+  id: ID!
+  chainId: Int!
+  name: String!
+  symbol: String!
+  address: String!
+  totalSupply: BigInt!
+}
+
+type vestingFactory {
+  id: ID!
+  chainId: Int!
+  address: String!
+  vestingsCreated: Int!
+  feesAccrued: BigInt!
+  uniV2Router: String!
+  uniV2Pair: String!
+  feesInUsd: BigInt!
+  companyWallet: String!
+}
+
+type vesting {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  chainId: Int!
+  creator: String!
+  vestingAddress: String!
+  token: String!
+  merkleRoot: String!
+  tokenTotal: BigInt!
+  fee: BigInt!
+  timestamp: BigInt!
+  claimed: BigInt!
+  tokenInfo: token
+}
+
+type vestingClaim {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  chainId: Int!
+  account: String!
+  vesting: String!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+type stakingPool {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  stakingToken: String
+  rewardToken: String
+  startTime: BigInt
+  endTime: BigInt
+  precision: BigInt
+  totalReward: BigInt
+  stakingContract: String
+  user: String
+  stakingTokenInfo: token
+  rewardTokenInfo: token
+  poolIndex: BigInt
+}
+
+type stakingClaim {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  user: String!
+  amount: BigInt!
+  poolIndex: BigInt!
+  address: String!
+}
+
+type stakingDeposit {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  user: String!
+  amount: BigInt!
+  poolIndex: BigInt!
+  address: String!
+}
+
+type stakingWithdraw {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  user: String!
+  amount: BigInt!
+  poolIndex: BigInt!
+  address: String!
+}
+
+type multisendERC20 {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  contractAddress: String
+  tokenAddress: String
+  recipients: [String!]
+  amounts: [String!]
+  token: token
+  from: String
+}
+
+type multisendETH {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  contractAddress: String
+  recipients: [String!]
+  amounts: [String!]
+  from: String
+}
+
+type userPool {
+  id: ID!
+  chainId: Int!
+  contractAddress: String
+  poolIndex: BigInt
+  user: String!
+  deposit: BigInt
+  withdraw: BigInt
+  claimed: BigInt
 }

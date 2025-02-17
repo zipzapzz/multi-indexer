@@ -15,15 +15,8 @@ contracts:
     handler: src/EventHandlers.ts
     events:
       - event: "TeamFinanceTokenMint(address owner)"
+      - event: "MetadataUpdated(string metadata_ipfs_hash)"
 networks:
-  - id: 1 # Ethereum Mainnet
-    start_block: 10861674
-    contracts:
-    - name: StakingFactory
-      address:
-      - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
-    - name: MintFactory
-      address:
   # - id: 56 # BNB Mainnet
   #   start_block: 19909467
   #   contracts:
@@ -32,6 +25,22 @@ networks:
   #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
   #   - name: MintFactory
   #     address:
+  # - id: 11155111
+  #   start_block: 7679900
+  #   contracts:
+  #   - name: StakingFactory
+  #     address:
+  #     - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+  #   - name: MintFactory
+  #     address:
+  - id: 1 # Ethereum Mainnet
+    start_block: 10861674
+    contracts:
+    - name: StakingFactory
+      address:
+      - 0xd6A07b8065f9e8386A9a5bBA6A754a10A9CD1074
+    - name: MintFactory
+      address:
   - id: 153153 # Dione
     rpc_config:
       url: https://node.dioneprotocol.com/ext/bc/D/rpc # RPC URL that will be used to subscribe to blockchain data on this network
