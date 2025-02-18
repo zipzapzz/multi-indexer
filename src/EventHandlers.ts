@@ -1,10 +1,10 @@
 import { 
   MintFactory,   
   StakingFactory,
-  stakingClaim,
-  stakingDeposit,
-  stakingPool,
-  stakingWithdraw, 
+  stakingClaims,
+  stakingDeposits,
+  stakingPools,
+  stakingWithdraws, 
   teamFinanceTokens
 } from "generated";
 
@@ -20,7 +20,7 @@ import { publicClients } from "../utils/viem";
 import { setTimeout } from "timers/promises";
 
 StakingFactory.Claim.handler(async ({ event, context }) => {
-  const entity: stakingClaim = {
+  const entity: stakingClaims = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user.toLocaleLowerCase(),
     amount: event.params.amount,
@@ -33,11 +33,11 @@ StakingFactory.Claim.handler(async ({ event, context }) => {
     chainId: event.chainId
   };
 
-  context.stakingClaim.set(entity);
+  context.stakingClaims.set(entity);
 });
 
 StakingFactory.Deposit.handler(async ({ event, context }) => {
-  const entity: stakingDeposit = {
+  const entity: stakingDeposits = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user.toLocaleLowerCase(),
     amount: event.params.amount,
@@ -50,7 +50,7 @@ StakingFactory.Deposit.handler(async ({ event, context }) => {
     chainId: event.chainId
   };
 
-  context.stakingDeposit.set(entity);
+  context.stakingDeposits.set(entity);
 });
 
 // StakingFactory.PoolCreated.handler(async ({ event, context }) => {
@@ -73,7 +73,7 @@ StakingFactory.Deposit.handler(async ({ event, context }) => {
 // });
 
 StakingFactory.Withdraw.handler(async ({ event, context }) => {
-  const entity: stakingWithdraw = {
+  const entity: stakingWithdraws = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user.toLocaleLowerCase(),
     amount: event.params.amount,
@@ -86,7 +86,7 @@ StakingFactory.Withdraw.handler(async ({ event, context }) => {
     chainId: event.chainId
   };
 
-  context.stakingWithdraw.set(entity);
+  context.stakingWithdraws.set(entity);
 });
 
 

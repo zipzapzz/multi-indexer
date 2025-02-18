@@ -14,7 +14,7 @@ type teamFinanceTokens {
   ipfs: String
 }
 
-type deposit {
+type deposits {
   id: ID! # Transaction hash
   blockHeight: Int
   depositId: BigInt! @index
@@ -31,7 +31,7 @@ type deposit {
   depositDetail: depositDetail
 }
 
-type depositNFT {
+type depositNfts {
   id: ID! # Transaction hash
   blockHeight: Int
   txHash: String
@@ -49,7 +49,7 @@ type depositNFT {
   depositDetail: depositDetail
 }
 
-type lockDurationExtended {
+type lockDurationExtendeds {
   id: ID! # Transaction hash
   blockHeight: Int
   txHash: String
@@ -61,7 +61,7 @@ type lockDurationExtended {
   unlockTime: BigInt!
 }
 
-type lockSplit {
+type lockSplits {
   id: ID! # Transaction hash
   blockHeight: Int
   txHash: String
@@ -75,7 +75,7 @@ type lockSplit {
   newSplitLockAmount: BigInt!
 }
 
-type logNFTWithdrawal {
+type logNftWithdrawals {
   id: ID! # Transaction hash
   blockHeight: Int
   txHash: String
@@ -91,7 +91,7 @@ type logNFTWithdrawal {
   depositDetail: depositDetail
 }
 
-type logTokenWithdrawal {
+type logTokenWithdrawals {
   id: ID! # Transaction hash
   blockHeight: Int
   txHash: String
@@ -139,7 +139,7 @@ type nft {
   totalSupply: BigInt!
 }
 
-type vestingFactory {
+type vestingFactories {
   id: ID!
   chainId: Int!
   address: String!
@@ -151,7 +151,7 @@ type vestingFactory {
   companyWallet: String!
 }
 
-type vesting {
+type vestings {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -168,7 +168,7 @@ type vesting {
   tokenInfo: token
 }
 
-type vestingClaim {
+type vestingClaims {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -180,7 +180,7 @@ type vestingClaim {
   timestamp: BigInt!
 }
 
-type stakingPool {
+type stakingPools {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -200,7 +200,7 @@ type stakingPool {
   poolIndex: BigInt
 }
 
-type stakingClaim {
+type stakingClaims {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -213,7 +213,7 @@ type stakingClaim {
   address: String!
 }
 
-type stakingDeposit {
+type stakingDeposits {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -226,7 +226,7 @@ type stakingDeposit {
   address: String!
 }
 
-type stakingWithdraw {
+type stakingWithdraws {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -239,7 +239,7 @@ type stakingWithdraw {
   address: String!
 }
 
-type multisendERC20 {
+type multisendErc20s {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -254,7 +254,7 @@ type multisendERC20 {
   from: String
 }
 
-type multisendETH {
+type multisendEths {
   id: ID!
   blockHeight: Int
   txHash: String
@@ -267,7 +267,7 @@ type multisendETH {
   from: String
 }
 
-type userPool {
+type userPools {
   id: ID!
   chainId: Int!
   contractAddress: String
