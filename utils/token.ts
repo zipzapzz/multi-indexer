@@ -2,7 +2,7 @@ import { isAddress } from "viem";
 import { publicClients } from "./viem";
 import { erc20Abi } from "./abis";
 
-export async function getTOkenInfo(
+export async function getTokenInfo(
   address: string,
   chainId: keyof typeof publicClients
 ): Promise<{ symbol: string; name: string; totalSupply: bigint; decimals: number | null }> {
@@ -98,3 +98,29 @@ export async function fetchTokenDecimals(
     return null;
   }
 }
+
+// export async function getNftInfo(
+//   address: string,
+//   chainId: keyof typeof publicClients
+// ): Promise<{ symbol: string; name: string; totalSupply: bigint;}> {
+//   let results: [number, string, string];
+//   try {
+//     results = await publicClients[chainId].multicall({
+//       allowFailure: false,
+//       contracts: [
+//         {
+//           ...erc20,
+//           functionName: "name",
+//         },
+//         {
+//           ...erc20,
+//           functionName: "symbol",
+//         },
+//       ],
+//     });
+//   }
+//   catch (error) {
+//     console.error("fetch getNftInfo fail", error);
+//   }
+//   return { symbol, name, totalSupply, decimals };
+// , decimals}

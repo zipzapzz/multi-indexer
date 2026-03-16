@@ -65,8 +65,25 @@ export const publicClients = {
     chain: base,
     transport: http(),
   }),
+  // 56: createPublicClient({
+  //   chain: bsc,
+  //   transport: http(),
+  // }),
   56: createPublicClient({
-    chain: bsc,
+    chain: defineChain({
+      name: "BNB",
+      rpcUrls: {
+        default: {
+          http: ['https://rpc-dev-agitated.futuretechlabs.xyz/main/evm/56'],
+        },
+      },
+      id: 1,
+      nativeCurrency: {
+        name: "BNB",
+        symbol: "BNB",
+        decimals: 0
+      }
+    }),
     transport: http(),
   }),
   42220: createPublicClient({
@@ -149,13 +166,30 @@ export const publicClients = {
       name: "PulseChain",
       rpcUrls: {
         default: {
-          http: ['https://rpc-dev-agitated.futuretechlabs.xyz/main/evm/369'],
+          http: ['https://rpc-sgdev.futuretechlabs.xyz/main/evm/369'],
         },
       },
       id: 369,
       nativeCurrency: {
         name: "PLS",
         symbol: "PLS",
+        decimals: 0
+      }
+    }),
+    transport: http(),
+  }),
+  80094: createPublicClient({
+    chain: defineChain({
+      name: "Berachain",
+      rpcUrls: {
+        default: {
+          http: ['https://rpc.berachain.com'],
+        },
+      },
+      id: 80094,
+      nativeCurrency: {
+        name: "BERA",
+        symbol: "BERA",
         decimals: 0
       }
     }),

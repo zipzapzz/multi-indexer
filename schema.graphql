@@ -178,6 +178,8 @@ type vestingClaims {
   vesting: String!
   amount: BigInt!
   timestamp: BigInt!
+  userVesting: userVesting
+  vestingDetail: vestings
 }
 
 type stakingPools {
@@ -276,4 +278,52 @@ type userPools {
   deposit: BigInt
   withdraw: BigInt
   claimed: BigInt
+}
+
+type transferLocks {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  contractAddress: String
+  lockId: BigInt!
+  receiverAddress: String!
+}
+
+type splitLocks {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  contractAddress: String
+  lockId: BigInt!
+  splitAmount: BigInt!
+  splitUnlockTime: BigInt!
+  mintNFT: Boolean
+}
+
+type userVesting @entity {
+  id: ID!
+  chainId: Int!
+  vestingContractAddress: String
+  account: String!
+  totalClaimed: BigInt!
+}
+
+type vestingRevokeds @entity {
+  id: ID!
+  blockHeight: Int
+  txHash: String
+  transactionIndex: Int
+  timestamp: BigInt
+  chainId: Int!
+  account: String!
+  vesting: String!
+  amountUnvested: BigInt!
+  userVesting: userVesting
+  vestingDetail: vestings
 }
